@@ -4,7 +4,7 @@ import SpaceSuitA from './suits/space-suit-a.png';
 import SpaceSuitB from './suits/space-suit-b.png';
 
 const TOKEN_BASE_URI = 'https://shinji.xyz/api/unit-00/nft/';
-const DEFAULT_IMAGE = 'https://static.shinji.xyz/unit-00/nft-images/a857674791fb05b1444e3647c6cd4d75760bfe63c2253d4b7c76fe2d430714e0.png';
+const DEFAULT_IMAGE = 'data:image/svg+xml;base64,';
 
 const SPACE_CLOTHES = [
   'Space Suit A',
@@ -25,8 +25,6 @@ function App() {
   const [sjId, setSjId] = React.useState('');
   const [imageUrl, setImageUrl] = React.useState<string | null>(null);
   const [clothes, setClothes] = React.useState<string | null>(null);
-
-  const imageComponent = React.useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     if (!sjId) return;
@@ -64,15 +62,26 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        *BETA* What's your Shonen Junk ID?
-        <input type="text" value={sjId} onChange={e => setSjId(e.target.value)} placeholder={"Example: 4647"} />
+        <div>
+          *BETA* What's your Shonen Junk ID?
+          <input type="text" value={sjId} onChange={e => setSjId(e.target.value)} placeholder={"Example: 4647"} />
+        </div>
+        <div>
+          Original Art by <a href={'https://shonenjunk.xyz'} target="_blank">Shonen Junk</a>
+        </div>
+        <div>
+          Half-body Space Suit Art by <a href={'https://twitter.com/JohnnyCash4243'} target="_blank">JohnnyCash424</a>
+        </div>
+        <div>
+          Website by <a href={'https://twitter.com/_clrke'} target="_blank">clrke.eth</a>
+        </div>
       </header>
 
       <section className={"content"}>
         {clothes && !SPACE_CLOTHES.includes(clothes) && (
           <h1>Looks like you don't have a space suit. That's okay, you can borrow one.</h1>
         )}
-        <img src={imageUrl || DEFAULT_IMAGE} alt="Shonen Junk" width={400} ref={imageComponent} />
+        {imageUrl && <img src={imageUrl} alt="Shonen Junk" width={400} />}
         {clothes && (
           clothes === SPACE_CLOTHES[0] ? (
             <img className={"space-suit space-suit-a"} src={SpaceSuitA} alt="Space Suit B" width={330} />
