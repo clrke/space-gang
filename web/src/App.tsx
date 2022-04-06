@@ -44,6 +44,7 @@ function App() {
       setImageUrl(nft.image);
       setClothes(nft.attributes.find(a => a.trait_type === 'Clothes')!.value);
 
+      /*
       const imgObj = new Image();
       imgObj.src = nft.image + '?' + new Date().getTime();
       imgObj.setAttribute('crossOrigin', '');
@@ -56,6 +57,7 @@ function App() {
       context2d.drawImage(imgObj, 0, 0, imgObj.width, imgObj.height);
       const pixelData = context2d.getImageData(0, imgObj.height-1, 1, 1).data;
       console.log(pixelData);
+      */
     })();
   }, [sjId]);
 
