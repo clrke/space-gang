@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "https://clrke.github.io/space-suit-gang/static/css/main.31d313c1.css",
-    "main.js": "https://clrke.github.io/space-suit-gang/static/js/main.5a296d7f.js",
+    "main.css": "https://clrke.github.io/space-suit-gang/static/css/main.b13ce870.css",
+    "main.js": "https://clrke.github.io/space-suit-gang/static/js/main.84c8565e.js",
     "static/js/787.2dc784a3.chunk.js": "https://clrke.github.io/space-suit-gang/static/js/787.2dc784a3.chunk.js",
     "static/media/space-suit-b.png": "https://clrke.github.io/space-suit-gang/static/media/space-suit-b.f24a375c2a3a0d6de7ad.png",
     "static/media/space-suit-a.png": "https://clrke.github.io/space-suit-gang/static/media/space-suit-a.835f4b82cd4f21e212fc.png",
     "index.html": "https://clrke.github.io/space-suit-gang/index.html",
-    "main.31d313c1.css.map": "https://clrke.github.io/space-suit-gang/static/css/main.31d313c1.css.map",
-    "main.5a296d7f.js.map": "https://clrke.github.io/space-suit-gang/static/js/main.5a296d7f.js.map",
+    "main.b13ce870.css.map": "https://clrke.github.io/space-suit-gang/static/css/main.b13ce870.css.map",
+    "main.84c8565e.js.map": "https://clrke.github.io/space-suit-gang/static/js/main.84c8565e.js.map",
     "787.2dc784a3.chunk.js.map": "https://clrke.github.io/space-suit-gang/static/js/787.2dc784a3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.31d313c1.css",
-    "static/js/main.5a296d7f.js"
+    "static/css/main.b13ce870.css",
+    "static/js/main.84c8565e.js"
   ]
 }
