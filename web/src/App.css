@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  transition: all 0.4s ease-in-out;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -26,9 +27,36 @@ section.content {
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: white;
+}
+
+.right-shoulder-cover {
+  height: 100px;
+  width: 250px;
+  margin-top: -71px;
+  margin-left: 192px;
+  transform: rotate(10deg);
+  transition: all 0.4s ease-in-out;
 }
 
 .space-suit {
-  margin-top: -102px;
+  margin-top: -132px;
   margin-left: 34px;
+}
+
+section.suit-controls {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  padding: 24px;
+  width: 400px;
+  margin: auto;
+}
+
+section.suit-controls > div {
+  padding: 8px;
+}
+
+input[type=range] {
+  margin-left: 8px;
 }

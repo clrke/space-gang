@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import './App.css';
 import SpaceSuitA from './suits/space-suit-a.png';
 import SpaceSuitB from './suits/space-suit-b.png';
+import BACKGROUND_COLORS from "./constants/backgrounds";
 
 const TOKEN_BASE_URI = 'https://shinji.xyz/api/unit-00/nft/';
-const DEFAULT_IMAGE = 'data:image/svg+xml;base64,';
 
 const SPACE_CLOTHES = [
   'Space Suit A',
@@ -25,6 +25,11 @@ function App() {
   const [sjId, setSjId] = React.useState('');
   const [imageUrl, setImageUrl] = React.useState<string | null>(null);
   const [clothes, setClothes] = React.useState<string | null>(null);
+  const [suitHue, setSuitHue] = React.useState<number>(0);
+  const [hideRightShoulder, setHideRightShoulder] = React.useState<boolean>(true);
+  const [backgroundColor, setBackgroundColor] = React.useState<[number, number, number, number]>(
+    BACKGROUND_COLORS[0]
+  );
 
   useEffect(() => {
     if (!sjId) return;
@@ -41,6 +46,7 @@ function App() {
 
       setImageUrl(nft.image);
       setClothes(nft.attributes.find(a => a.trait_type === 'Clothes')!.value);
+      setBackgroundColor(BACKGROUND_COLORS[+sjId] || BACKGROUND_COLORS[0]);
 
       /*
       const imgObj = new Image();
@@ -60,7 +66,7 @@ function App() {
   }, [sjId]);
 
   return (
-    <div className="App">
+    <div className="App" style={{ backgroundColor: `rgba(${backgroundColor.join(',')})` }}>
       <header className="App-header">
         <div>
           *BETA* What's your Shonen Junk ID?
@@ -82,14 +88,59 @@ function App() {
           <h1>Looks like you don't have a space suit. That's okay, you can borrow one.</h1>
         )}
         {imageUrl && <img src={imageUrl} alt="Shonen Junk" width={400} />}
+        {imageUrl && (
+          <div className="right-shoulder-cover" style={{
+            backgroundColor: hideRightShoulder ? `rgba(${backgroundColor.join(',')})` : "transparent",
+          }} />
+        )}
         {clothes && (
-          clothes === SPACE_CLOTHES[0] ? (
-            <img className={"space-suit space-suit-a"} src={SpaceSuitA} alt="Space Suit B" width={330} />
-          ) : (
-            <img className={"space-suit space-suit-b"} src={SpaceSuitB} alt="Space Suit B" width={330} />
-          )
+          <>
+            {clothes === SPACE_CLOTHES[0] ? (
+              <img
+                className={"space-suit space-suit-a"}
+                src={SpaceSuitA}
+                alt="Space Suit B"
+                width={330}
+                style={{
+                  filter: `hue-rotate(${suitHue}deg)`,
+                }}
+              />
+            ) : (
+              <img
+                className={"space-suit space-suit-b"}
+                src={SpaceSuitB}
+                alt="Space Suit B"
+                width={330}
+                style={{
+                  filter: `hue-rotate(${suitHue}deg)`,
+                }}
+              />
+            )}
+          </>
         )}
       </section>
+      {clothes && (
+        <section className="suit-controls">
+          <div>
+            Adjust suit hue color
+            <input
+              type="range"
+              min="0"
+              max="359"
+              value={suitHue}
+              onChange={e => setSuitHue(+e.target.value)}
+              className="slider"
+            />
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              checked={hideRightShoulder}
+              onClick={() => setHideRightShoulder(!hideRightShoulder)}
+            /> Hide right shoulder?
+          </div>
+        </section>
+      )}
     </div>
   );
 }
