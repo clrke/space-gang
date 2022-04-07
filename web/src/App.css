@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   transition: all 0.4s ease-in-out;
+  overflow: hidden;
 }
 
 @media (prefers-reduced-motion: no-preference) {
